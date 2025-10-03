@@ -1,0 +1,24 @@
+[
+  {
+    "module": "golang.org/x/mod",
+    "vcs": "git",
+    "repo": "https://go.googlesource.com/mod",
+    "source": {
+      "home": "https://cs.opensource.google/go/x/mod",
+      "dir": "https://cs.opensource.google/go/x/mod/+/refs/heads/master/{dir}",
+      "file": "https://cs.opensource.google/go/x/mod/+/refs/heads/master/{dir}/{file}#L{line}"
+    },
+    "homepage": "https://pkg.go.dev/golang.org/x/mod"
+  },
+  {
+    "module": "golang.org/x/tools",
+    "vcs": "git",
+    "repo": "https://go.googlesource.com/tools",
+    "source": {
+      "home": "https://cs.opensource.google/go/x/tools",
+      "dir": "https://cs.opensource.google/go/x/tools/+/refs/heads/master/{dir}",
+      "file": "https://cs.opensource.google/go/x/tools/+/refs/heads/master/{dir}/{file}#L{line}"
+    },
+    "homepage": "https://pkg.go.dev/golang.org/x/tools"
+  }
+]

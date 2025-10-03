@@ -1,3 +1,5 @@
+import moduleMirrorsData from "../module-mirrors.json";
+
 export interface ModuleMirror {
   /**
    * Module import path prefix handled by this worker.
@@ -28,30 +30,7 @@ export interface ModuleMirror {
   homepage?: string;
 }
 
-export const MODULE_MIRRORS: ModuleMirror[] = [
-  {
-    module: "golang.org/x/mod",
-    vcs: "git",
-    repo: "https://go.googlesource.com/mod",
-    source: {
-      home: "https://cs.opensource.google/go/x/mod",
-      dir: "https://cs.opensource.google/go/x/mod/+/refs/heads/master/{dir}",
-      file: "https://cs.opensource.google/go/x/mod/+/refs/heads/master/{dir}/{file}#L{line}",
-    },
-    homepage: "https://pkg.go.dev/golang.org/x/mod",
-  },
-  {
-    module: "golang.org/x/tools",
-    vcs: "git",
-    repo: "https://go.googlesource.com/tools",
-    source: {
-      home: "https://cs.opensource.google/go/x/tools",
-      dir: "https://cs.opensource.google/go/x/tools/+/refs/heads/master/{dir}",
-      file: "https://cs.opensource.google/go/x/tools/+/refs/heads/master/{dir}/{file}#L{line}",
-    },
-    homepage: "https://pkg.go.dev/golang.org/x/tools",
-  },
-];
+export const MODULE_MIRRORS: ModuleMirror[] = moduleMirrorsData;
 
 export const MODULE_MIRRORS_BY_LENGTH = [...MODULE_MIRRORS].sort(
   (a, b) => b.module.length - a.module.length,

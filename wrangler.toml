@@ -1,0 +1,7 @@
+name = "go-module-proxy"
+main = "src/index.ts"
+compatibility_date = "2023-10-10"
+usage_model = "bundled"
+
+[vars]
+# Example: set via `wrangler secret put` for private mirrors.

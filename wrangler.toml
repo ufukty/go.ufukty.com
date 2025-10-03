@@ -1,7 +1,18 @@
 name = "go-module-proxy"
-main = "src/index.ts"
-compatibility_date = "2023-10-10"
-usage_model = "bundled"
+main = "worker/index.ts"
+compatibility_date = "2025-10-03"
+preview_urls = true
 
-[vars]
-# Example: set via `wrangler secret put` for private mirrors.
+[build]
+command = "npm run build"
+
+[assets]
+binding = "ASSETS"
+directory = "./build"
+html_handling = "drop-trailing-slash"
+not_found_handling = "none"
+
+[[routes]]
+pattern = "go.ufukty.com"
+zone_name = "ufukty.com"
+custom_domain = true

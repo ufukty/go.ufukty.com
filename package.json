@@ -9,6 +9,7 @@
   "name": "go-module-proxy",
   "private": true,
   "scripts": {
+    "build": ":",
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "format": "prettier --write src/**/*.ts",

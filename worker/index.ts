@@ -13,34 +13,43 @@ function findModuleMirror(path: string): Module | undefined {
   return modulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }
 
-import { renderGoGetMeta, renderLandingPage, renderNotFound } from "./templates";
+export function renderGoGetMeta(m: Module): string {
+  const goImport = `<meta name="go-import" content="${m.module} ${m.vcs} ${m.repo}">`;
+  const goSource = m.source
+    ? `<meta name="go-source" content="${module} ${m.source.home} ${m.source.dir} ${m.source.file}">`
+    : "";
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+${goImport}
+${goSource}
+</head>
+<body>
+</body>
+</html>`;
+}
 
 export default {
   async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url);
-    const path = trimSlashes(url.pathname);
-    const moduleMirror = findModuleMirror(path);
+    const u = new URL(request.url);
+    const p = trimSlashes(u.pathname);
+    const m = findModuleMirror(p);
 
-    if (!moduleMirror) {
-      return new Response(renderNotFound(path), {
+    if (!m) {
+      return new Response(``, {
         status: 404,
         headers: { "content-type": "text/html; charset=utf-8" },
       });
     }
 
-    if (url.searchParams.get("go-get") === "1") {
-      return new Response(renderGoGetMeta(moduleMirror), {
+    if (u.searchParams.get("go-get") === "1") {
+      return new Response(renderGoGetMeta(m), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
     }
 
-    if (moduleMirror.homepage) {
-      return Response.redirect(moduleMirror.homepage, 302);
-    }
-
-    return new Response(renderLandingPage(moduleMirror), {
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
+    return Response.redirect("https://ufukty.com", 308);
   },
 };
 

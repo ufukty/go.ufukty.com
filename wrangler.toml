@@ -1,0 +1,12 @@
+name = "go-module-proxy"
+main = "worker/index.ts"
+compatibility_date = "2025-10-03"
+preview_urls = true
+
+[build]
+command = "npm run build"
+
+[[routes]]
+pattern = "go.ufukty.com"
+zone_name = "ufukty.com"
+custom_domain = true

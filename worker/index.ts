@@ -1,5 +1,7 @@
 import data from "../modules.json";
 
+const home = "https://ufukty.com";
+
 function trimSlashes(pathname: string): string {
   return pathname.replace(/^\/+|\/+$/g, "");
 }
@@ -17,8 +19,10 @@ function render(proxy: string, m: Module): string {
 <html>
 <head>
 <meta name="go-import" content="${proxy}/${m.module} ${m.vcs} ${m.repo}">
+<meta http-equiv="refresh" content="0;URL='${home}'">
 </head>
 <body>
+Redirecting...
 </body>
 </html>`;
 }
@@ -37,6 +41,6 @@ export default {
       }
     }
 
-    return Response.redirect("https://ufukty.com", 308);
+    return Response.redirect(home, 308);
   },
 };

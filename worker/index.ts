@@ -1,6 +1,10 @@
 import { type Module } from "../models/module";
 import data from "../modules.json";
 
+function trimSlashes(pathname: string): string {
+  return pathname.replace(/^\/+|\/+$/g, "");
+}
+
 const modules: Module[] = data;
 const modulesByLength = [...modules].sort((a, b) => b.module.length - a.module.length);
 
@@ -52,7 +56,3 @@ export default {
     return Response.redirect("https://ufukty.com", 308);
   },
 };
-
-function trimSlashes(pathname: string): string {
-  return pathname.replace(/^\/+|\/+$/g, "");
-}

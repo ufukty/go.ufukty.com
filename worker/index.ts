@@ -17,7 +17,7 @@ function findModuleMirror(path: string): Module | undefined {
   return modulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }
 
-export function renderGoGetMeta(m: Module): string {
+function renderGoGetMeta(m: Module): string {
   const goImport = `<meta name="go-import" content="${m.module} ${m.vcs} ${m.repo}">`;
   const goSource = m.source
     ? `<meta name="go-source" content="${module} ${m.source.home} ${m.source.dir} ${m.source.file}">`

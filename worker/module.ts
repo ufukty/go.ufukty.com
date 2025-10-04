@@ -1,5 +1,3 @@
-import data from "../modules.json";
-
 export interface Module {
   /**
    * Module import path prefix handled by this worker.
@@ -29,7 +27,3 @@ export interface Module {
   /** Optional friendly landing page to redirect human visitors. */
   homepage?: string;
 }
-
-export const Modules: Module[] = data;
-
-export const ModulesByLength = [...Modules].sort((a, b) => b.module.length - a.module.length);

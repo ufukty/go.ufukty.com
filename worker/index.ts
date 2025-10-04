@@ -1,4 +1,20 @@
-import { ModulesByLength, type Module } from "./module";
+import { type Module } from "./module";
+import data from "../modules.json";
+
+export const Modules: Module[] = data;
+
+export const ModulesByLength = [...Modules].sort((a, b) => b.module.length - a.module.length);
+
+function findModuleMirror(path: string): Module | undefined {
+  if (path === "") {
+    return undefined;
+  }
+
+  // Compute the longest matching module prefix so that nested packages
+  // (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
+  return ModulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
+}
+
 import { renderGoGetMeta, renderLandingPage, renderNotFound } from "./templates";
 
 export default {
@@ -32,14 +48,4 @@ export default {
 
 function trimSlashes(pathname: string): string {
   return pathname.replace(/^\/+|\/+$/g, "");
-}
-
-function findModuleMirror(path: string): Module | undefined {
-  if (path === "") {
-    return undefined;
-  }
-
-  // Compute the longest matching module prefix so that nested packages
-  // (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
-  return ModulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }

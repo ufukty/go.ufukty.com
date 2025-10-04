@@ -17,17 +17,11 @@ function findModuleMirror(path: string): Module | undefined {
   return modulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }
 
-function renderGoGetMeta(m: Module): string {
-  const goImport = `<meta name="go-import" content="${m.module} ${m.vcs} ${m.repo}">`;
-  const goSource = m.source
-    ? `<meta name="go-source" content="${module} ${m.source.home} ${m.source.dir} ${m.source.file}">`
-    : "";
-
+function render(m: Module): string {
   return `<!DOCTYPE html>
 <html>
 <head>
-${goImport}
-${goSource}
+<meta name="go-import" content="${m.module} ${m.vcs} ${m.repo}">
 </head>
 <body>
 </body>
@@ -48,7 +42,7 @@ export default {
     }
 
     if (u.searchParams.get("go-get") === "1") {
-      return new Response(renderGoGetMeta(m), {
+      return new Response(render(m), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
     }

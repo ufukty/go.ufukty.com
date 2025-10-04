@@ -13,17 +13,6 @@ export interface Module {
    * Remote repository URL.
    */
   repo: string;
-  /**
-   * Optional source browser information for go-source meta tags.
-   */
-  source?: {
-    /** Base URL for browsing documentation. */
-    home: string;
-    /** Base URL for directory listings. */
-    dir: string;
-    /** Base URL for files. */
-    file: string;
-  };
   /** Optional friendly landing page to redirect human visitors. */
   homepage?: string;
 }

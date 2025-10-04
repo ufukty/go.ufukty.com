@@ -1,4 +1,4 @@
-import { type Module } from "./models/module";
+import { type Module } from "../models/module";
 import data from "../modules.json";
 
 export const Modules: Module[] = data;

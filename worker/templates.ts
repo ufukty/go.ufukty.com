@@ -1,4 +1,4 @@
-import type { ModuleMirror } from "./module-mirrors";
+import type { Module } from "./module-mirrors";
 
 const baseStyles = `
   body { font-family: system-ui, sans-serif; margin: 3rem auto; max-width: 40rem; padding: 0 1.5rem; color: #1f2933; }
@@ -9,7 +9,7 @@ const linkStyles = `
   a:hover { text-decoration: underline; }
 `;
 
-export function renderGoGetMeta({ module, vcs, repo, source }: ModuleMirror): string {
+export function renderGoGetMeta({ module, vcs, repo, source }: Module): string {
   const goImport = `<meta name="go-import" content="${module} ${vcs} ${repo}">`;
   const goSource = source
     ? `<meta name="go-source" content="${module} ${source.home} ${source.dir} ${source.file}">`
@@ -18,7 +18,7 @@ export function renderGoGetMeta({ module, vcs, repo, source }: ModuleMirror): st
   return `<!DOCTYPE html><html lang="en"><head>${goImport}${goSource}</head><body></body></html>`;
 }
 
-export function renderLandingPage(moduleMirror: ModuleMirror): string {
+export function renderLandingPage(moduleMirror: Module): string {
   const { module, repo, homepage } = moduleMirror;
   const description = `Redirects Go tooling to ${repo}.`;
   const links = [
@@ -26,9 +26,7 @@ export function renderLandingPage(moduleMirror: ModuleMirror): string {
     homepage ? { href: homepage, label: "Documentation" } : undefined,
   ].filter(Boolean) as { href: string; label: string }[];
 
-  const linksHtml = links
-    .map((link) => `<li><a href="${link.href}">${link.label}</a></li>`)
-    .join("");
+  const linksHtml = links.map((link) => `<li><a href="${link.href}">${link.label}</a></li>`).join("");
 
   return `<!DOCTYPE html>
 <html lang="en">

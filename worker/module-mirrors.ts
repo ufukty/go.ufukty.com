@@ -1,6 +1,6 @@
-import moduleMirrorsData from "../modules.json";
+import data from "../modules.json";
 
-export interface ModuleMirror {
+export interface Module {
   /**
    * Module import path prefix handled by this worker.
    * e.g. `golang.org/x/mod`.
@@ -30,6 +30,6 @@ export interface ModuleMirror {
   homepage?: string;
 }
 
-export const MODULE_MIRRORS: ModuleMirror[] = moduleMirrorsData;
+export const MODULE_MIRRORS: Module[] = data;
 
 export const MODULE_MIRRORS_BY_LENGTH = [...MODULE_MIRRORS].sort((a, b) => b.module.length - a.module.length);

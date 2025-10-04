@@ -1,9 +1,5 @@
-import { MODULE_MIRRORS_BY_LENGTH, type ModuleMirror } from "./module-mirrors";
-import {
-  renderGoGetMeta,
-  renderLandingPage,
-  renderNotFound,
-} from "./templates";
+import { MODULE_MIRRORS_BY_LENGTH, type Module } from "./module-mirrors";
+import { renderGoGetMeta, renderLandingPage, renderNotFound } from "./templates";
 
 export default {
   async fetch(request: Request): Promise<Response> {
@@ -38,14 +34,12 @@ function trimSlashes(pathname: string): string {
   return pathname.replace(/^\/+|\/+$/g, "");
 }
 
-function findModuleMirror(path: string): ModuleMirror | undefined {
+function findModuleMirror(path: string): Module | undefined {
   if (path === "") {
     return undefined;
   }
 
   // Compute the longest matching module prefix so that nested packages
   // (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
-  return MODULE_MIRRORS_BY_LENGTH.find(
-    ({ module }) => path === module || path.startsWith(`${module}/`),
-  );
+  return MODULE_MIRRORS_BY_LENGTH.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }

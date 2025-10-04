@@ -1,12 +1,12 @@
 [
   {
-    "module": "golang.org/x/mod",
-    "vcs": "git",
-    "repo": "https://go.googlesource.com/mod"
+    "module": "go.ufukty.com/gonfique",
+    "repo": "https://github.com/ufukty/gonfique",
+    "vcs": "git"
   },
   {
-    "module": "golang.org/x/tools",
-    "vcs": "git",
-    "repo": "https://go.googlesource.com/tools"
+    "module": "go.ufukty.com/gohandlers",
+    "repo": "https://github.com/ufukty/gohandlers",
+    "vcs": "git"
   }
 ]

@@ -1,4 +1,4 @@
-import moduleMirrorsData from "../module-mirrors.json";
+import moduleMirrorsData from "../modules.json";
 
 export interface ModuleMirror {
   /**
@@ -32,6 +32,4 @@ export interface ModuleMirror {
 
 export const MODULE_MIRRORS: ModuleMirror[] = moduleMirrorsData;
 
-export const MODULE_MIRRORS_BY_LENGTH = [...MODULE_MIRRORS].sort(
-  (a, b) => b.module.length - a.module.length,
-);
+export const MODULE_MIRRORS_BY_LENGTH = [...MODULE_MIRRORS].sort((a, b) => b.module.length - a.module.length);

@@ -2,13 +2,11 @@
   {
     "module": "golang.org/x/mod",
     "vcs": "git",
-    "repo": "https://go.googlesource.com/mod",
-    "homepage": "https://pkg.go.dev/golang.org/x/mod"
+    "repo": "https://go.googlesource.com/mod"
   },
   {
     "module": "golang.org/x/tools",
     "vcs": "git",
-    "repo": "https://go.googlesource.com/tools",
-    "homepage": "https://pkg.go.dev/golang.org/x/tools"
+    "repo": "https://go.googlesource.com/tools"
   }
 ]

@@ -13,6 +13,4 @@ export interface Module {
    * Remote repository URL.
    */
   repo: string;
-  /** Optional friendly landing page to redirect human visitors. */
-  homepage?: string;
 }

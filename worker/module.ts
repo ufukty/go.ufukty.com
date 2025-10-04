@@ -30,6 +30,6 @@ export interface Module {
   homepage?: string;
 }
 
-export const MODULE_MIRRORS: Module[] = data;
+export const Modules: Module[] = data;
 
-export const MODULE_MIRRORS_BY_LENGTH = [...MODULE_MIRRORS].sort((a, b) => b.module.length - a.module.length);
+export const ModulesByLength = [...Modules].sort((a, b) => b.module.length - a.module.length);

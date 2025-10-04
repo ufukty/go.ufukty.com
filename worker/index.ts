@@ -1,4 +1,4 @@
-import { MODULE_MIRRORS_BY_LENGTH, type Module } from "./module";
+import { ModulesByLength, type Module } from "./module";
 import { renderGoGetMeta, renderLandingPage, renderNotFound } from "./templates";
 
 export default {
@@ -41,5 +41,5 @@ function findModuleMirror(path: string): Module | undefined {
 
   // Compute the longest matching module prefix so that nested packages
   // (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
-  return MODULE_MIRRORS_BY_LENGTH.find(({ module }) => path === module || path.startsWith(`${module}/`));
+  return ModulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }

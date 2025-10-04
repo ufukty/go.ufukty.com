@@ -1,18 +1,16 @@
 import { type Module } from "../models/module";
 import data from "../modules.json";
 
-export const Modules: Module[] = data;
+const modules: Module[] = data;
+const modulesByLength = [...modules].sort((a, b) => b.module.length - a.module.length);
 
-export const ModulesByLength = [...Modules].sort((a, b) => b.module.length - a.module.length);
-
+// Compute the longest matching module prefix so that nested packages
+// (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
 function findModuleMirror(path: string): Module | undefined {
   if (path === "") {
     return undefined;
   }
-
-  // Compute the longest matching module prefix so that nested packages
-  // (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
-  return ModulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
+  return modulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
 }
 
 import { renderGoGetMeta, renderLandingPage, renderNotFound } from "./templates";

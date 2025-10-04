@@ -1,11 +1,11 @@
 [
   {
-    "module": "go.ufukty.com/gonfique",
+    "module": "gonfique",
     "repo": "https://github.com/ufukty/gonfique",
     "vcs": "git"
   },
   {
-    "module": "go.ufukty.com/gohandlers",
+    "module": "gohandlers",
     "repo": "https://github.com/ufukty/gohandlers",
     "vcs": "git"
   }

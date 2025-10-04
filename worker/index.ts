@@ -1,27 +1,22 @@
-import { type Module } from "../models/module";
 import data from "../modules.json";
 
 function trimSlashes(pathname: string): string {
   return pathname.replace(/^\/+|\/+$/g, "");
 }
 
-const modules: Module[] = data;
-const modulesByLength = [...modules].sort((a, b) => b.module.length - a.module.length);
-
-// Compute the longest matching module prefix so that nested packages
-// (e.g. golang.org/x/mod/module) resolve to the correct meta tags.
-function find(path: string): Module | undefined {
-  if (path === "") {
-    return undefined;
-  }
-  return modulesByLength.find(({ module }) => path === module || path.startsWith(`${module}/`));
+interface Module {
+  module: string;
+  vcs: string;
+  repo: string;
 }
 
-function render(m: Module): string {
+const file: Module[] = data;
+
+function render(proxy: string, m: Module): string {
   return `<!DOCTYPE html>
 <html>
 <head>
-<meta name="go-import" content="${m.module} ${m.vcs} ${m.repo}">
+<meta name="go-import" content="${proxy}/${m.module} ${m.vcs} ${m.repo}">
 </head>
 <body>
 </body>
@@ -33,10 +28,10 @@ export default {
     const u = new URL(request.url);
 
     if (u.pathname !== "/") {
-      const m = find(trimSlashes(u.pathname));
-      
+      const p = trimSlashes(u.pathname);
+      const m = file.find((m) => p === m.module);
       if (m && u.searchParams.get("go-get") === "1") {
-        return new Response(render(m), {
+        return new Response(render(u.hostname, m), {
           headers: { "content-type": "text/html; charset=utf-8" },
         });
       }

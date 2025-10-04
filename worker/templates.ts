@@ -1,4 +1,4 @@
-import type { Module } from "./module-mirrors";
+import type { Module } from "./module";
 
 const baseStyles = `
   body { font-family: system-ui, sans-serif; margin: 3rem auto; max-width: 40rem; padding: 0 1.5rem; color: #1f2933; }

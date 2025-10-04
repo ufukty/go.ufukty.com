@@ -1,4 +1,4 @@
-import { MODULE_MIRRORS_BY_LENGTH, type Module } from "./module-mirrors";
+import { MODULE_MIRRORS_BY_LENGTH, type Module } from "./module";
 import { renderGoGetMeta, renderLandingPage, renderNotFound } from "./templates";
 
 export default {

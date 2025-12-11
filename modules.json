@@ -8,5 +8,10 @@
     "module": "gohandlers",
     "repo": "https://github.com/ufukty/gohandlers",
     "vcs": "git"
+  },
+  {
+    "module": "gommons",
+    "repo": "https://github.com/ufukty/gommons",
+    "vcs": "git"
   }
 ]

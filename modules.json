@@ -13,5 +13,10 @@
     "module": "gommons",
     "repo": "https://github.com/ufukty/gommons",
     "vcs": "git"
+  },
+  {
+    "module": "gss",
+    "repo": "https://github.com/ufukty/gss",
+    "vcs": "git"
   }
 ]

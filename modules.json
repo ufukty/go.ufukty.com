@@ -18,5 +18,10 @@
     "module": "gss",
     "repo": "https://github.com/ufukty/gss",
     "vcs": "git"
+  },
+  {
+    "module": "gomethods",
+    "repo": "https://github.com/ufukty/gomethods",
+    "vcs": "git"
   }
 ]

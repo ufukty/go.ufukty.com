@@ -15,11 +15,11 @@ interface Module {
 
 const file: Module[] = data;
 
-function render(proxy: string, m: Module): string {
+function render(m: Module): string {
   return `<!DOCTYPE html>
 <html>
 <head>
-<meta name="go-import" content="${proxy}/${m.module} ${m.vcs} ${m.repo}">
+<meta name="go-import" content="${m.module} ${m.vcs} ${m.repo}">
 <meta http-equiv="refresh" content="0;URL='${home}'">
 </head>
 <body>
@@ -37,7 +37,7 @@ export default {
       const m = file.find((m) => p === m.module);
       if (m) {
         if (u.searchParams.get("go-get") === "1") {
-          return new Response(render(u.hostname, m), {
+          return new Response(render(m), {
             headers: { "content-type": "text/html; charset=utf-8" },
           });
         } else {

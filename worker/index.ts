@@ -8,8 +8,9 @@ function trimSlashes(pathname: string): string {
 
 interface Module {
   module: string;
-  vcs: string;
   repo: string;
+  vcs: string;
+  visits: string;
 }
 
 const file: Module[] = data;
@@ -34,10 +35,14 @@ export default {
     if (u.pathname !== "/") {
       const p = trimSlashes(u.pathname);
       const m = file.find((m) => p === m.module);
-      if (m && u.searchParams.get("go-get") === "1") {
-        return new Response(render(u.hostname, m), {
-          headers: { "content-type": "text/html; charset=utf-8" },
-        });
+      if (m) {
+        if (u.searchParams.get("go-get") === "1") {
+          return new Response(render(u.hostname, m), {
+            headers: { "content-type": "text/html; charset=utf-8" },
+          });
+        } else {
+          return Response.redirect(m.visits, 302);
+        }
       }
     }
 

@@ -2,26 +2,31 @@
   {
     "module": "gonfique",
     "repo": "https://github.com/ufukty/gonfique",
-    "vcs": "git"
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/gonfique"
   },
   {
     "module": "gohandlers",
     "repo": "https://github.com/ufukty/gohandlers",
-    "vcs": "git"
+    "vcs": "git",
+    "visits": "https://gohandlers.pages.dev"
   },
   {
     "module": "gommons",
     "repo": "https://github.com/ufukty/gommons",
-    "vcs": "git"
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/gommons"
   },
   {
     "module": "gss",
     "repo": "https://github.com/ufukty/gss",
-    "vcs": "git"
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/gss"
   },
   {
     "module": "gomethods",
     "repo": "https://github.com/ufukty/gomethods",
-    "vcs": "git"
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/gomethods"
   }
 ]

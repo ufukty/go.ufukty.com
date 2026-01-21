@@ -28,6 +28,18 @@ Redirecting...
 </html>`;
 }
 
+function notFound(): string {
+  return `<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1>Not found</h1>
+<p>Return to <a href="${home}">home</a></p>
+</body>
+</html>`;
+}
+
 export default {
   async fetch(request: Request): Promise<Response> {
     const u = new URL(request.url);
@@ -46,6 +58,12 @@ export default {
       }
     }
 
-    return Response.redirect(home, 308);
+    return new Response(notFound(), {
+      status: 404,
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-store",
+      },
+    });
   },
 };

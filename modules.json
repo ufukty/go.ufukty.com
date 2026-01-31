@@ -27,6 +27,12 @@
     "module": "gomethods",
     "repo": "https://github.com/ufukty/gomethods",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/gomethods"
+    "visits": "https://github.com/ufukty/golistics"
+  },
+  {
+    "module": "golistics",
+    "repo": "https://github.com/ufukty/golistics",
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/golistics"
   }
 ]

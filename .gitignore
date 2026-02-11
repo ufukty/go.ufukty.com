@@ -1,4 +1,5 @@
-node_modules/
 .dist/
-.workers/
+.DS_Store
 .tsbuildinfo
+.workers/
+node_modules/

@@ -30,6 +30,12 @@
     "visits": "https://github.com/ufukty/golistics"
   },
   {
+    "module": "kask",
+    "repo": "https://github.com/ufukty/kask",
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/kask/pkg/kask"
+  },
+  {
     "module": "golistics",
     "repo": "https://github.com/ufukty/golistics",
     "vcs": "git",

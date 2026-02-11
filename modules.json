@@ -33,7 +33,7 @@
     "module": "kask",
     "repo": "https://github.com/ufukty/kask",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/kask/pkg/kask"
+    "visits": "https://github.com/ufukty/kask"
   },
   {
     "module": "golistics",

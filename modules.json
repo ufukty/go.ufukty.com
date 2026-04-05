@@ -40,5 +40,11 @@
     "repo": "https://github.com/ufukty/golistics",
     "vcs": "git",
     "visits": "https://github.com/ufukty/golistics"
+  },
+  {
+    "module": "ovpn-auth",
+    "repo": "https://github.com/ufukty/ovpn-auth",
+    "vcs": "git",
+    "visits": "https://github.com/ufukty/ovpn-auth"
   }
 ]

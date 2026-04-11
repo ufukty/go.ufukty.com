@@ -35,7 +35,7 @@ function notFound(): string {
 </head>
 <body>
 <h1>Not found</h1>
-<p>Return to <a href="${home}">home</a></p>
+<p>Want to return <a href="${home}">home</a>?</p>
 </body>
 </html>`;
 }

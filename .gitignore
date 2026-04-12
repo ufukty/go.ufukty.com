@@ -3,3 +3,4 @@
 .tsbuildinfo
 .workers/
 node_modules/
+/.wrangler

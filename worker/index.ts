@@ -62,15 +62,17 @@ function match(target: string): Module | undefined {
   return file.find((m) => target === m.module);
 }
 
-export default async function fetch(request: Request): Promise<Response> {
-  const url = new URL(request.url);
-  const target = match(url.pathname);
-  const isGoTools = url.searchParams.get("go-get") === "1";
+export default {
+  async fetch(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+    const target = match(url.pathname);
+    const isGoTools = url.searchParams.get("go-get") === "1";
 
-  if (target) {
-    if (isGoTools) return renderGoImportResponse(url.hostname, target);
-    else return Response.redirect(target.visits, 302);
-  } else {
-    return notFound();
-  }
-}
+    if (target) {
+      if (isGoTools) return renderGoImportResponse(url.hostname, target);
+      else return Response.redirect(target.visits, 302);
+    } else {
+      return notFound();
+    }
+  },
+};

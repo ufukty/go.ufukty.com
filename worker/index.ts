@@ -57,9 +57,7 @@ async function notFound(): Promise<Response> {
 }
 
 function match(target: string): Module | undefined {
-  if (target === "/") {
-    return undefined;
-  }
+  if (target === "/") return undefined;
   target = trimSlashes(target);
   return file.find((m) => target === m.module);
 }

@@ -1,21 +1,8 @@
-import data from "../modules.json";
+import * as config from "./config";
 
 const home = "https://ufukty.com";
 
-function trimSlashes(pathname: string): string {
-  return pathname.replace(/^\/+|\/+$/g, "");
-}
-
-interface Module {
-  module: string;
-  repo: string;
-  vcs: string;
-  visits: string;
-}
-
-const file: Module[] = data;
-
-async function renderGoImportResponse(proxy: string, m: Module): Promise<Response> {
+async function renderGoImportResponse(proxy: string, m: config.Module): Promise<Response> {
   return new Response(
     `<!DOCTYPE html>
 <html>
@@ -56,16 +43,10 @@ async function notFound(): Promise<Response> {
   );
 }
 
-function match(target: string): Module | undefined {
-  if (target === "/") return undefined;
-  target = trimSlashes(target);
-  return file.find((m) => target === m.module);
-}
-
 export default {
   async fetch(request: Request): Promise<Response> {
     const url = new URL(request.url);
-    const target = match(url.pathname);
+    const target = config.Match(url.pathname);
     const isGoTools = url.searchParams.get("go-get") === "1";
 
     if (target) {

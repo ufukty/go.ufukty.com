@@ -15,8 +15,9 @@ interface Module {
 
 const file: Module[] = data;
 
-function render(proxy: string, m: Module): string {
-  return `<!DOCTYPE html>
+async function renderGoImportResponse(proxy: string, m: Module): Promise<Response> {
+  return new Response(
+    `<!DOCTYPE html>
 <html>
 <head>
 <meta name="go-import" content="${proxy}/${m.module} ${m.vcs} ${m.repo}">
@@ -25,27 +26,53 @@ function render(proxy: string, m: Module): string {
 <body>
 Redirecting...
 </body>
-</html>`;
+</html>`,
+    {
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+      },
+    },
+  );
+}
+
+async function notFound(): Promise<Response> {
+  return new Response(
+    `<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1>Not found</h1>
+<p>Want to return <a href="${home}">home</a>?</p>
+</body>
+</html>`,
+    {
+      status: 404,
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-store",
+      },
+    },
+  );
+}
+
+function match(target: string): Module | undefined {
+  if (target === "/") return undefined;
+  target = trimSlashes(target);
+  return file.find((m) => target === m.module);
 }
 
 export default {
   async fetch(request: Request): Promise<Response> {
-    const u = new URL(request.url);
+    const url = new URL(request.url);
+    const target = match(url.pathname);
+    const isGoTools = url.searchParams.get("go-get") === "1";
 
-    if (u.pathname !== "/") {
-      const p = trimSlashes(u.pathname);
-      const m = file.find((m) => p === m.module);
-      if (m) {
-        if (u.searchParams.get("go-get") === "1") {
-          return new Response(render(u.hostname, m), {
-            headers: { "content-type": "text/html; charset=utf-8" },
-          });
-        } else {
-          return Response.redirect(m.visits, 302);
-        }
-      }
+    if (target) {
+      if (isGoTools) return renderGoImportResponse(url.hostname, target);
+      else return Response.redirect(target.visits, 302);
+    } else {
+      return notFound();
     }
-
-    return Response.redirect(home, 308);
   },
 };

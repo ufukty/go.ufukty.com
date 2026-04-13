@@ -1,4 +1,4 @@
-import * as config from "./config";
+import * as config from "./matcher";
 import modules from "../modules.json";
 
 const home = "https://ufukty.com";

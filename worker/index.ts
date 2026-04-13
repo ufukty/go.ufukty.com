@@ -1,6 +1,8 @@
 import * as config from "./config";
+import modules from "../modules.json";
 
 const home = "https://ufukty.com";
+const matcher = new config.Matcher(modules);
 
 async function renderGoImportResponse(proxy: string, m: config.Module): Promise<Response> {
   return new Response(
@@ -46,7 +48,7 @@ async function notFound(): Promise<Response> {
 export default {
   async fetch(request: Request): Promise<Response> {
     const url = new URL(request.url);
-    const target = config.Match(url.pathname);
+    const target = matcher.Match(url.pathname);
     const isGoTools = url.searchParams.get("go-get") === "1";
 
     if (target) {

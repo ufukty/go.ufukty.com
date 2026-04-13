@@ -1,5 +1,3 @@
-import data from "../modules.json";
-
 export interface Module {
   module: string;
   repo: string;
@@ -7,14 +5,20 @@ export interface Module {
   visits: string;
 }
 
-const file: Module[] = data;
-
 function trimSlashes(pathname: string): string {
   return pathname.replace(/^\/+|\/+$/g, "");
 }
 
-export function Match(target: string): Module | undefined {
-  if (target === "/") return undefined;
-  target = trimSlashes(target);
-  return file.find((m) => target === m.module);
+export class Matcher {
+  modules: Module[];
+
+  constructor(modules: Module[]) {
+    this.modules = modules;
+  }
+
+  Match(target: string): Module | undefined {
+    if (target === "/") return undefined;
+    target = trimSlashes(target);
+    return this.modules.find((m) => target === m.module);
+  }
 }

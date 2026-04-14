@@ -14,7 +14,13 @@ describe("Match", () => {
     vcs: "git",
     visits: "0",
   };
-  const modules = [moduleKask, moduleGonfique];
+  const moduleIrrelevant = {
+    module: "k",
+    repo: "https://github.com/ufukty/k",
+    vcs: "git",
+    visits: "0",
+  };
+  const modules = [moduleIrrelevant, moduleKask, moduleGonfique];
   const matcher = new Matcher(modules);
 
   it("returns undefined for root", () => {

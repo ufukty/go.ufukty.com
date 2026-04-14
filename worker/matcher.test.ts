@@ -14,7 +14,13 @@ describe("Match", () => {
     vcs: "git",
     visits: "0",
   };
-  const modules = [moduleKask, moduleGonfique];
+  const moduleIrrelevant = {
+    module: "k",
+    repo: "https://github.com/ufukty/k",
+    vcs: "git",
+    visits: "0",
+  };
+  const modules = [moduleIrrelevant, moduleKask, moduleGonfique];
   const matcher = new Matcher(modules);
 
   it("returns undefined for root", () => {
@@ -25,19 +31,19 @@ describe("Match", () => {
     expect(matcher.Match("kask")).toEqual(moduleKask);
   });
 
-  it("does not resolve a package path to its module", () => {
-    expect(matcher.Match("/gonfique/sub/pkg")).toBeUndefined();
+  it("matches a versioned module by exact path", () => {
+    expect(matcher.Match("kask/v2")).toEqual(moduleKask);
   });
 
-  it("does not resolve a package path under a versioned module", () => {
-    expect(matcher.Match("/gonfique/v2/sub/pkg")).toBeUndefined();
+  it("returns module root for contained packages", () => {
+    expect(matcher.Match("kask/pkg/kask")).toEqual(moduleKask);
   });
 
-  it("does not infer unknown major versions", () => {
-    expect(matcher.Match("/gonfique/v3")).toBeUndefined();
+  it("returns module root for contained packages of versioned module", () => {
+    expect(matcher.Match("kask/v2/pkg/kask")).toEqual(moduleKask);
   });
 
   it("returns undefined for unknown modules", () => {
-    expect(matcher.Match("/unknown")).toBeUndefined();
+    expect(matcher.Match("unknown")).toBeUndefined();
   });
 });

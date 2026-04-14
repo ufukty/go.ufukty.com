@@ -48,21 +48,10 @@ async function notFound(): Promise<Response> {
 export default {
   async fetch(request: Request): Promise<Response> {
     const url = new URL(request.url);
-    console.log({
-      "poi": "fetch",
-      "host": url.host,
-      "method": request.method,
-      "path": url.pathname,
-      "ua": request.headers.get("user-agent") ?? "",
-      "cf-ray": request.headers.get("cf-ray"),
-      "cf-colo": (request as Request & { cf?: { colo?: string } }).cf?.colo ?? null,
-      "cf-country": (request as Request & { cf?: { country?: string } }).cf?.country ?? null,
-      "cf-city": (request as Request & { cf?: { city?: string } }).cf?.city ?? null,
-    });
-
     const target = matcher.Match(url.pathname);
     const isGoTools = url.searchParams.get("go-get") === "1";
 
+    console.log({ "requested": url.pathname, "redirected": target?.module ?? "404" });
     if (target) {
       if (isGoTools) return renderGoImportResponse(url.hostname, target);
       else return Response.redirect(target.visits, 302);

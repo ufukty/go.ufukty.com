@@ -38,10 +38,10 @@ describe("Match", () => {
   });
 
   it("does not resolve a package path to its module", () => {
-    expect(matcher.Match("/gonfique/sub/pkg")).toBeUndefined();
+    expect(matcher.Match("gonfique/sub/pkg")).toBeUndefined();
   });
 
   it("returns undefined for unknown modules", () => {
-    expect(matcher.Match("/unknown")).toBeUndefined();
+    expect(matcher.Match("unknown")).toBeUndefined();
   });
 });

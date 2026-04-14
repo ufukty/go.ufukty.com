@@ -25,6 +25,18 @@ describe("Match", () => {
     expect(matcher.Match("kask")).toEqual(moduleKask);
   });
 
+  it("matches a versioned module by exact path", () => {
+    expect(matcher.Match("kask/v2")).toEqual(moduleKask);
+  });
+
+  it("returns module root for contained packages", () => {
+    expect(matcher.Match("kask/pkg/kask")).toEqual(moduleKask);
+  });
+
+  it("returns module root for contained packages of versioned module", () => {
+    expect(matcher.Match("kask/v2/pkg/kask")).toEqual(moduleKask);
+  });
+
   it("does not resolve a package path to its module", () => {
     expect(matcher.Match("/gonfique/sub/pkg")).toBeUndefined();
   });

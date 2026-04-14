@@ -3,6 +3,7 @@ export interface Module {
   repo: string;
   vcs: string;
   visits: string;
+  major: number;
 }
 
 function trimSlashes(pathname: string): string {

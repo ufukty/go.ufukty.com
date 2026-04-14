@@ -3,63 +3,54 @@
     "module": "gohandlers",
     "repo": "https://github.com/ufukty/gohandlers",
     "vcs": "git",
-    "visits": "https://gohandlers.ufukty.com",
-    "major": 1
+    "visits": "https://gohandlers.ufukty.com"
   },
   {
     "module": "golistics",
     "repo": "https://github.com/ufukty/golistics",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/golistics",
-    "major": 1
+    "visits": "https://github.com/ufukty/golistics"
   },
   {
     "module": "golits",
     "repo": "https://github.com/ufukty/golits",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/golits",
-    "major": 1
+    "visits": "https://github.com/ufukty/golits"
   },
   {
     "module": "gomethods",
     "repo": "https://github.com/ufukty/gomethods",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/golistics",
-    "major": 1
+    "visits": "https://github.com/ufukty/golistics"
   },
   {
     "module": "gommons",
     "repo": "https://github.com/ufukty/gommons",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/gommons",
-    "major": 1
+    "visits": "https://github.com/ufukty/gommons"
   },
   {
     "module": "gonfique",
     "repo": "https://github.com/ufukty/gonfique",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/gonfique",
-    "major": 2
+    "visits": "https://github.com/ufukty/gonfique"
   },
   {
     "module": "gss",
     "repo": "https://github.com/ufukty/gss",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/gss",
-    "major": 1
+    "visits": "https://github.com/ufukty/gss"
   },
   {
     "module": "kask",
     "repo": "https://github.com/ufukty/kask",
     "vcs": "git",
-    "visits": "https://kask.ufukty.com",
-    "major": 1
+    "visits": "https://kask.ufukty.com"
   },
   {
     "module": "ovpn-auth",
     "repo": "https://github.com/ufukty/ovpn-auth",
     "vcs": "git",
-    "visits": "https://github.com/ufukty/ovpn-auth",
-    "major": 1
+    "visits": "https://github.com/ufukty/ovpn-auth"
   }
 ]

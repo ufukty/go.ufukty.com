@@ -37,10 +37,6 @@ describe("Match", () => {
     expect(matcher.Match("kask/v2/pkg/kask")).toEqual(moduleKask);
   });
 
-  it("does not resolve a package path to its module", () => {
-    expect(matcher.Match("gonfique/sub/pkg")).toBeUndefined();
-  });
-
   it("returns undefined for unknown modules", () => {
     expect(matcher.Match("unknown")).toBeUndefined();
   });

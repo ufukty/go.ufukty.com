@@ -51,7 +51,7 @@ export default {
     const target = matcher.Match(url.pathname);
     const isGoTools = url.searchParams.get("go-get") === "1";
 
-    console.log({ "requested": url.pathname, "redirected": target ? target.module : "404" });
+    console.log({ "requested": url.pathname, "redirected": target?.module ?? "404" });
     if (target) {
       if (isGoTools) return renderGoImportResponse(url.hostname, target);
       else return Response.redirect(target.visits, 302);

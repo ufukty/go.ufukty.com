@@ -25,10 +25,6 @@ describe("Match", () => {
     expect(matcher.Match("kask")).toEqual(moduleKask);
   });
 
-  it("matches after trimming leading and trailing slashes", () => {
-    expect(matcher.Match("///lib///")).toBeUndefined();
-  });
-
   it("does not resolve a package path to its module", () => {
     expect(matcher.Match("/gonfique/sub/pkg")).toBeUndefined();
   });

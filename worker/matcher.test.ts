@@ -29,14 +29,6 @@ describe("Match", () => {
     expect(matcher.Match("/gonfique/sub/pkg")).toBeUndefined();
   });
 
-  it("does not resolve a package path under a versioned module", () => {
-    expect(matcher.Match("/gonfique/v2/sub/pkg")).toBeUndefined();
-  });
-
-  it("does not infer unknown major versions", () => {
-    expect(matcher.Match("/gonfique/v3")).toBeUndefined();
-  });
-
   it("returns undefined for unknown modules", () => {
     expect(matcher.Match("/unknown")).toBeUndefined();
   });

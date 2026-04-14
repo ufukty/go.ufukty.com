@@ -10,3 +10,6 @@ command = "npm run build"
 pattern = "go.ufukty.com"
 zone_name = "ufukty.com"
 custom_domain = true
+
+[observability]
+enabled = true
